@@ -8,81 +8,76 @@ let gameCanv = document.getElementById("gameBoard");
 let ctx = gameCanv.getContext("2d");
 
 //Players Info
-let Play1Position = 1;
-let Play2Position = 1;
-let Play3Position = 1;
-let Play4Position = 1;
+var Play1Position = 1;
+var Play2Position = 1;
+var Play3Position = 1;
+var Play4Position = 1;
+var myKey = "playerPositions";
+var PlayerTileLocations = [1,1,1,1];
 
-
-var myKey = "Player Positions";
-var PlayerTileLocations = [];
 function setupLocal() {
-
+  console.log("Starting Setup");
   if(localStorage.getItem(myKey) !== null) {
     let myItemsString = localStorage.getItem(myKey);
     PlayerTileLocations = JSON.parse(myItemsString);
     $(PlayerTileLocations).each(function() {
-      createItem(this);
+      Play1Position = PlayerTileLocations[0];
+      Play2Position = PlayerTileLocations[1];
+      Play3Position = PlayerTileLocations[2];
+      Play4Position = PlayerTileLocations[3];
     });
   }
-  else {
-    createItem("Item1");
-}
 
-$("#Player1Button").on("click", function() {
-  let curVal1 = Play1Position;
-  createItem(curVal1);
-  PlayerTileLocations.push(curVal1);
-  saveItems();
-})
+  $("#Player1Button").on("click", function() {
+    rollPlayer1();
+    PlayerTileLocations[0] = Play1Position;
+    saveItems();
+  })
 
-$("#Player2Button").on("click", function() {
-  let curVal2 = Play2Position;
-  createItem(curVal2);
-  PlayerTileLocations.push(curVal2);
-  saveItems();
-})
+  $("#Player2Button").on("click", function() {
+    rollPlayer2();
+    PlayerTileLocations[1] = Play2Position;
+    saveItems();
+  })
 
-$("#Player3Button").on("click", function() {
-  let curVal3 = Play3Position;
-  createItem(curVal3);
-  PlayerTileLocations.push(curVal3);
-  saveItems();
-})
+  $("#Player3Button").on("click", function() {
+    rollPlayer3();
+    PlayerTileLocations[2] = Play3Position;
+    saveItems();
+  })
 
-$("#Player4Button").on("click", function() {
-  let curVal4 = Play4Position;
-  createItem(curVal4);
-  PlayerTileLocations.push(curVal4);
-  saveItems();
-});
+  $("#Player4Button").on("click", function() {
+    rollPlayer4();
+    PlayerTileLocations[3] = Play4Position;
+    saveItems();
+  })
+  $("#NukeButton").on("click", function() {
+    Nuke();
+    PlayerTileLocations = [1,1,1,1];
+    saveItems();
+  })
+  ;
+  console.log("Finished Setup");
+} // setupLocal
 
-}
 function saveItems() {
+  console.log("Starting save");
+  console.log(PlayerTileLocations);
   let myItemsString = JSON.stringify(PlayerTileLocations);
-  localStorage.setItem(myKey, PlayerTileLocations);
+  localStorage.setItem(myKey, myItemsString);
+  console.log("Finished save");
 }
-
-(function() {
-  setupLocal();
-})
-
 
 //game board array
 let gameMap = [
-  23, 24, 25, 26, 27, 28, 29, 30, 31,
-  22,  0,  0,  0,  0,  0,  0,  0,  0,
-  21,  0,  0,  0,  0,  0,  0,  0,  0,
-  20, 19, 18, 17, 16, 15, 14, 13, 12,
+  23, 24, 25, 20, 19, 18, 17, 16, 15,
+  22,  0,  0,  0,  0,  0,  0,  0, 14,
+  21,  0,  0,  0,  0,  0,  0,  0, 13,
+  20,  0,  0,  0,  0,  0,  0,  0, 12,
    0,  0,  0,  0,  0,  0,  0,  0, 11,
    0,  0,  0,  0,  0,  0,  0,  0, 10,
    1,  2,  3,  4,  5,  6,  7,  8,  9
 ];
-
-//game loop
-drawGameBoard();
-
-
 
 //draw game function
 function drawGameBoard() {
@@ -144,61 +139,61 @@ function drawGameBoard() {
 
 }
 
+function rollPlayer1() {
+  let rollNum = Math.floor(Math.random() * 6) + 1;
+  Play1Position += rollNum;
+  if (Play1Position >= 31) {
+    Play1Position = 31
+  }
+  drawGameBoard();
 
+  console.log("Player 1 rolled a " + rollNum)
 
+}
 
-    function rollPlayer1() {
-      let rollNum = Math.floor(Math.random() * 6) + 1;
-      Play1Position += rollNum;
-      if (Play1Position >= 31) {
-        Play1Position = 31
-      }
-      drawGameBoard();
+function rollPlayer2() {
+  let rollNum = Math.floor(Math.random() * 6) + 1;
+  Play2Position += rollNum;
+  if (Play2Position >= 31) {
+    Play2Position = 31
+  }
+  drawGameBoard();
 
-      console.log("Player 1 rolled a " + rollNum)
+  console.log("Player 2 rolled a " + rollNum)
 
-    }
+}
 
-    function rollPlayer2() {
-      let rollNum = Math.floor(Math.random() * 6) + 1;
-      Play2Position += rollNum;
-      if (Play2Position >= 31) {
-        Play2Position = 31
-      }
-      drawGameBoard();
+function rollPlayer3() {
+  let rollNum = Math.floor(Math.random() * 6) + 1;
+  Play3Position += rollNum;
+  if (Play3Position >= 31) {
+    Play3Position = 31
+  }
+  drawGameBoard();
 
-      console.log("Player 2 rolled a " + rollNum)
+  console.log("Player 3 rolled a " + rollNum)
 
-    }
+}
 
-    function rollPlayer3() {
-      let rollNum = Math.floor(Math.random() * 6) + 1;
-      Play3Position += rollNum;
-      if (Play3Position >= 31) {
-        Play3Position = 31
-      }
-      drawGameBoard();
+function rollPlayer4() {
+  let rollNum = Math.floor(Math.random() * 6) + 1;
+  Play4Position += rollNum;
+  if (Play4Position >= 31) {
+    Play4Position = 31
+  }
+  drawGameBoard();
 
-      console.log("Player 3 rolled a " + rollNum)
+  console.log("Player 4 rolled a " + rollNum)
 
-    }
+}
 
-    function rollPlayer4() {
-      let rollNum = Math.floor(Math.random() * 6) + 1;
-      Play4Position += rollNum;
-      if (Play4Position >= 31) {
-        Play4Position = 31
-      }
-      drawGameBoard();
+function Nuke() {
+   Play1Position = 1;
+   Play2Position = 1;
+   Play3Position = 1;
+   Play4Position = 1;
+   drawGameBoard();
+}
 
-      console.log("Player 4 rolled a " + rollNum)
-
-    }
-
-    function Nuke() {
-       Play1Position = 1;
-       Play2Position = 1;
-       Play3Position = 1;
-       Play4Position = 1;
-       drawGameBoard();
-    }
+setupLocal();
+drawGameBoard();
