@@ -97,6 +97,9 @@ function drawGameBoard() {
     function rollPlayer1() {
       let rollNum = Math.floor(Math.random() * 6) + 1;
       Play1Position += rollNum;
+      if (Play1Position >= 31) {
+        Play1Position = 31
+      }
       drawGameBoard();
 
       console.log("Player 1 rolled a " + rollNum)
@@ -106,6 +109,9 @@ function drawGameBoard() {
     function rollPlayer2() {
       let rollNum = Math.floor(Math.random() * 6) + 1;
       Play2Position += rollNum;
+      if (Play2Position >= 31) {
+        Play2Position = 31
+      }
       drawGameBoard();
 
       console.log("Player 2 rolled a " + rollNum)
@@ -115,6 +121,9 @@ function drawGameBoard() {
     function rollPlayer3() {
       let rollNum = Math.floor(Math.random() * 6) + 1;
       Play3Position += rollNum;
+      if (Play3Position >= 31) {
+        Play3Position = 31
+      }
       drawGameBoard();
 
       console.log("Player 3 rolled a " + rollNum)
@@ -124,10 +133,21 @@ function drawGameBoard() {
     function rollPlayer4() {
       let rollNum = Math.floor(Math.random() * 6) + 1;
       Play4Position += rollNum;
+      if (Play4Position >= 31) {
+        Play4Position = 31
+      }
       drawGameBoard();
 
       console.log("Player 4 rolled a " + rollNum)
 
+    }
+
+    function Nuke() {
+       Play1Position = 1;
+       Play2Position = 1;
+       Play3Position = 1;
+       Play4Position = 1;
+       drawGameBoard();
     }
 
 
