@@ -1,5 +1,5 @@
 let mapH = 7;
-let mapW = 9;
+let mapW = 20;
 let tileSize = 80;
 let playerTileSize = 20;
 let PlayerTurn = [1,2,3,4];
@@ -70,13 +70,13 @@ function saveItems() {
 
 //game board array
 let gameMap = [
-  23, 22, 21, 20, 19, 18, 17, 16, 15,
-  24,  0,  0,  0,  0,  0,  0,  0, 14,
-  25,  0, 39, 38, 37, 36, 35,  0, 13,
-  26,  0,  0,  0,  0,  0, 34,  0, 12,
-  27, 28, 29, 30, 31, 32, 33,  0, 11,
-   0,  0,  0,  0,  0,  0,  0,  0, 10,
-   1,  2,  3,  4,  5,  6,  7,  8,  9
+   7,  8,  9,  0, 23, 24, 25,  0, 49, 50, 51, 52, 53, 54, 55, 56,  0, 70, 71, 72,
+   6,  0, 10,  0, 22,  0, 26,  0, 48,  0,  0,  0,  0,  0,  0, 57,  0, 69,  0,  0,
+   5,  0, 11,  0, 21,  0, 27,  0, 47,  0,  0,  0,  0,  0,  0, 58,  0, 68,  0,  0,
+   4,  0, 12,  0, 20,  0, 28,  0, 46,  0,  0,  0,  0,  0,  0, 59,  0, 67,  0,  0,
+   3,  0, 13,  0, 19,  0, 29,  0, 45, 44, 43, 42, 41, 40,  0, 60,  0, 66,  0,  0,
+   2,  0, 14,  0, 18,  0, 30,  0,  0,  0,  0,  0,  0, 39,  0, 61,  0, 65,  0,  0,
+   1,  0, 15, 16, 17,  0, 31, 32, 33, 34, 35, 36, 37, 38,  0, 62, 63, 64,  0,  0
 ];
 
 //draw game function
@@ -105,7 +105,7 @@ function drawGameBoard() {
       ctx.fillStyle = "black";
       ctx.fillText("Start", xPosition + 20, yPosition - tileSize/2);
     }
-    if (gameMap[i].valueOf() == 39) {
+    if (gameMap[i].valueOf() == 72) {
       ctx.font = "20px Georgia";
       ctx.fillStyle = "black";
       ctx.fillText("End", xPosition + 20, yPosition - tileSize/2);
@@ -142,8 +142,8 @@ function drawGameBoard() {
 function rollPlayer1() {
   let rollNum = Math.floor(Math.random() * 6) + 1;
   Play1Position += rollNum;
-  if (Play1Position >= 39) {
-    Play1Position = 39
+  if (Play1Position >= 72) {
+    Play1Position = 72;
   }
   drawGameBoard();
 
@@ -154,8 +154,8 @@ function rollPlayer1() {
 function rollPlayer2() {
   let rollNum = Math.floor(Math.random() * 6) + 1;
   Play2Position += rollNum;
-  if (Play2Position >= 39) {
-    Play2Position = 39
+  if (Play2Position >= 72) {
+    Play2Position = 72;
   }
   drawGameBoard();
 
@@ -166,8 +166,8 @@ function rollPlayer2() {
 function rollPlayer3() {
   let rollNum = Math.floor(Math.random() * 6) + 1;
   Play3Position += rollNum;
-  if (Play3Position >= 39) {
-    Play3Position = 39
+  if (Play3Position >= 72) {
+    Play3Position = 72;
   }
   drawGameBoard();
 
@@ -178,8 +178,8 @@ function rollPlayer3() {
 function rollPlayer4() {
   let rollNum = Math.floor(Math.random() * 6) + 1;
   Play4Position += rollNum;
-  if (Play4Position >= 39) {
-    Play4Position = 39
+  if (Play4Position >= 72) {
+    Play4Position = 72;
   }
   drawGameBoard();
 
