@@ -70,11 +70,11 @@ function saveItems() {
 
 //game board array
 let gameMap = [
-  23, 24, 25, 20, 19, 18, 17, 16, 15,
-  22,  0,  0,  0,  0,  0,  0,  0, 14,
-  21,  0,  0,  0,  0,  0,  0,  0, 13,
-  20,  0,  0,  0,  0,  0,  0,  0, 12,
-   0,  0,  0,  0,  0,  0,  0,  0, 11,
+  23, 22, 21, 20, 19, 18, 17, 16, 15,
+  24,  0,  0,  0,  0,  0,  0,  0, 14,
+  25,  0, 39, 38, 37, 36, 35,  0, 13,
+  26,  0,  0,  0,  0,  0, 34,  0, 12,
+  27, 28, 29, 30, 31, 32, 33,  0, 11,
    0,  0,  0,  0,  0,  0,  0,  0, 10,
    1,  2,  3,  4,  5,  6,  7,  8,  9
 ];
@@ -105,7 +105,7 @@ function drawGameBoard() {
       ctx.fillStyle = "black";
       ctx.fillText("Start", xPosition + 20, yPosition - tileSize/2);
     }
-    if (gameMap[i].valueOf() == 31) {
+    if (gameMap[i].valueOf() == 39) {
       ctx.font = "20px Georgia";
       ctx.fillStyle = "black";
       ctx.fillText("End", xPosition + 20, yPosition - tileSize/2);
@@ -142,8 +142,8 @@ function drawGameBoard() {
 function rollPlayer1() {
   let rollNum = Math.floor(Math.random() * 6) + 1;
   Play1Position += rollNum;
-  if (Play1Position >= 31) {
-    Play1Position = 31
+  if (Play1Position >= 39) {
+    Play1Position = 39
   }
   drawGameBoard();
 
@@ -154,8 +154,8 @@ function rollPlayer1() {
 function rollPlayer2() {
   let rollNum = Math.floor(Math.random() * 6) + 1;
   Play2Position += rollNum;
-  if (Play2Position >= 31) {
-    Play2Position = 31
+  if (Play2Position >= 39) {
+    Play2Position = 39
   }
   drawGameBoard();
 
@@ -166,8 +166,8 @@ function rollPlayer2() {
 function rollPlayer3() {
   let rollNum = Math.floor(Math.random() * 6) + 1;
   Play3Position += rollNum;
-  if (Play3Position >= 31) {
-    Play3Position = 31
+  if (Play3Position >= 39) {
+    Play3Position = 39
   }
   drawGameBoard();
 
@@ -178,8 +178,8 @@ function rollPlayer3() {
 function rollPlayer4() {
   let rollNum = Math.floor(Math.random() * 6) + 1;
   Play4Position += rollNum;
-  if (Play4Position >= 31) {
-    Play4Position = 31
+  if (Play4Position >= 39) {
+    Play4Position = 39
   }
   drawGameBoard();
 
