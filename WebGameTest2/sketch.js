@@ -20,30 +20,52 @@ function setupLocal() {
 
   if(localStorage.getItem(myKey) !== null) {
     let myItemsString = localStorage.getItem(myKey);
-    myItems = JSON.parse(myItemsString);
-    $(myItems).each(function() {
+    PlayerTileLocations = JSON.parse(myItemsString);
+    $(PlayerTileLocations).each(function() {
       createItem(this);
     });
   }
   else {
+    createItem("Item1");
 }
 
-$("#buttonElement").on("click", function() {
+$("#Player1Button").on("click", function() {
   let curVal1 = Play1Position;
   createItem(curVal1);
-  myItems.push(curVal1);
+  PlayerTileLocations.push(curVal1);
+  saveItems();
+})
+
+$("#Player2Button").on("click", function() {
+  let curVal2 = Play2Position;
+  createItem(curVal2);
+  PlayerTileLocations.push(curVal2);
+  saveItems();
+})
+
+$("#Player3Button").on("click", function() {
+  let curVal3 = Play3Position;
+  createItem(curVal3);
+  PlayerTileLocations.push(curVal3);
+  saveItems();
+})
+
+$("#Player4Button").on("click", function() {
+  let curVal4 = Play4Position;
+  createItem(curVal4);
+  PlayerTileLocations.push(curVal4);
   saveItems();
 });
 
 }
 function saveItems() {
-  let myItemsString = JSON.stringify(myItems);
+  let myItemsString = JSON.stringify(PlayerTileLocations);
   localStorage.setItem(myKey, PlayerTileLocations);
 }
 
-$(function() {
+(function() {
   setupLocal();
-});
+})
 
 
 //game board array
