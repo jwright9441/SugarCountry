@@ -2,12 +2,16 @@ let mapH = 7;
 let mapW = 9;
 let tileSize = 80;
 let playerTileSize = 20;
+let PlayerTurn = [1,2,3,4];
 
 let gameCanv = document.getElementById("gameBoard");
 let ctx = gameCanv.getContext("2d");
 
 //Players Info
 let Play1Position = 1;
+let Play2Position = 1;
+let Play3Position = 1;
+let Play4Position = 1;
 
 
 
@@ -65,6 +69,21 @@ function drawGameBoard() {
       ctx.fillRect(xPosition, yPosition - 80, playerTileSize, playerTileSize);
     }
 
+    if (gameMap[i].valueOf() == Play2Position) {
+      ctx.fillStyle = "blue";
+      ctx.fillRect(xPosition + 59, yPosition - 80, playerTileSize, playerTileSize);
+    }
+
+    if (gameMap[i].valueOf() == Play3Position) {
+      ctx.fillStyle = "green";
+      ctx.fillRect(xPosition, yPosition - 21, playerTileSize, playerTileSize);
+    }
+
+    if (gameMap[i].valueOf() == Play4Position) {
+      ctx.fillStyle = "yellow";
+      ctx.fillRect(xPosition + 59, yPosition - 21, playerTileSize, playerTileSize);
+    }
+
 
     xPosition += tileSize;
 
@@ -74,11 +93,42 @@ function drawGameBoard() {
 
 
 
-//roll button
-function rollPlayer1() {
-  let rollNum = Math.floor(Math.random() * 6) + 1;
-  Play1Position += rollNum;
-  drawGameBoard();
 
-  console.log("Player 1 rolled a " + rollNum)
-}
+    function rollPlayer1() {
+      let rollNum = Math.floor(Math.random() * 6) + 1;
+      Play1Position += rollNum;
+      drawGameBoard();
+
+      console.log("Player 1 rolled a " + rollNum)
+
+    }
+
+    function rollPlayer2() {
+      let rollNum = Math.floor(Math.random() * 6) + 1;
+      Play2Position += rollNum;
+      drawGameBoard();
+
+      console.log("Player 2 rolled a " + rollNum)
+
+    }
+
+    function rollPlayer3() {
+      let rollNum = Math.floor(Math.random() * 6) + 1;
+      Play3Position += rollNum;
+      drawGameBoard();
+
+      console.log("Player 3 rolled a " + rollNum)
+
+    }
+
+    function rollPlayer4() {
+      let rollNum = Math.floor(Math.random() * 6) + 1;
+      Play4Position += rollNum;
+      drawGameBoard();
+
+      console.log("Player 4 rolled a " + rollNum)
+
+    }
+
+
+//roll button
