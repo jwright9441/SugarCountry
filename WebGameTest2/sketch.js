@@ -1,3 +1,4 @@
+//Defining Variables
 let mapH = 7;
 let mapW = 20;
 let tileSize = 80;
@@ -14,6 +15,8 @@ var Play3Position = 1;
 var Play4Position = 1;
 var myKey = "playerPositions";
 var PlayerTileLocations = [1,1,1,1];
+
+//Save Player Position for Refresh
 
 function setupLocal() {
   console.log("Starting Setup");
@@ -93,12 +96,17 @@ function drawGameBoard() {
       //out of bounds tiles
       ctx.fillStyle = "#664444";
       ctx.fillRect(xPosition, yPosition - 80, tileSize-1, tileSize-1);
-    } else {
+    }
+    else {
       //in-bounds tiles
       ctx.fillStyle = "#C3B3D7";
       ctx.fillRect(xPosition, yPosition - 80, tileSize-1, tileSize-1);
     }
 
+
+    if (gameMap[i].valueOf() == 40) {
+      ctx.fillStyle = "#ffff4d";
+    }
     //start and end tiles
     if (gameMap[i].valueOf() == 1) {
       ctx.font = "20px Georgia";
